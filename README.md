@@ -10,6 +10,22 @@ This repository contains the code that implements the automatic combination of g
 
 ## Installation
 
+You need to install version 2.0.0 of ERRANT according to the instructions in its github page.  These are replicated here for convenience.
+
+conda create --name gec python=3.6
+conda activate gec
+pip3 install -U pip setuptools wheel
+pip3 install errant==2.0.0
+python3 -m spacy download en
+
+Then install 
+
+pip install pandas
+pip install scipy
+ 
+## Example run
+
+
 ## Reference
 Yoav Kantor, Yoav Katz, Leshem Choshen, Edo Cohen-Karlik, Naftali Liberman, Assaf Toledo, Amir Menczel, Noam Slonim
  (2019). 
