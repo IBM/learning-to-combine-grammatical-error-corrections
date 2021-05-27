@@ -1,8 +1,6 @@
 # Learning to combine grammarical error corrections
 
-Introduced in [Ein-dor et al. (2020)](#reference), this is a framework for experimenting with text classification tasks.
-The focus is on low-resource scenarios, and examining how active learning (AL) can be used in combination with
-classification models.
+This repository contains the code that implements the automatic of combination of black box systems described in [Yoav Kantor, et al. (2019)](#reference) 
 
 **Table of contents**
 
