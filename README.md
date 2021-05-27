@@ -1,6 +1,6 @@
-# Learning to combine grammarical error corrections
+# Learning to combine grammatical error corrections
 
-This repository contains the code that implements the automatic of combination of black box systems described in [Yoav Kantor, et al. (2019)](#reference) 
+This repository contains the code that implements the automatic combination of grammatical error correction systems described in [Yoav Kantor, et al. (2019)](#reference) 
 
 **Table of contents**
 
@@ -42,8 +42,3 @@ inproceedings{kantor-etal-2019-learning,
 
 ## License
 This work is released under the Apache 2.0 license. The full text of the license can be found in [LICENSE](LICENSE).
-
-
-
-# learning-to-combine-grammatical-error-corrections
-Code from the "Learning to combine Grammatical Error Corrections"  paper. Proceedings of the Fourteenth Workshop on Innovative Use of NLP for Building Educational Applications (https://www.aclweb.org/anthology/W19-4414/)
