@@ -29,7 +29,7 @@ pip install scipy
  
 ## Example run
 
-The script `combine_top_bea19_system.sh` combines the original top systems in the BEA 2019 Shared Task.
+The script `combine_top_bea19_systems.sh` combines the original top systems in the BEA 2019 Shared Task.
 
 The top systems were UEDIN-MS and KakaoAndBrain.  
 
