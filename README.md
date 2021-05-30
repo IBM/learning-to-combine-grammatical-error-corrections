@@ -25,6 +25,28 @@ pip install scipy
  
 ## Example run
 
+The script combine_top_bea19_system.sh combines the original top restriction systems in the BEA 2019 Shared Task.
+
+The top systems were UEDIN-MS and KakaoAndBrain.  
+
+KakaoAndBrain:
+Yo  Joong  Choe,  Jiyeon  Ham,  Kyubyong  Park,  andYeoil  Yoon.  2019. A  Neural  Grammatical  ErrorCorrection System Built On Better Pre-training andSequential Transfer Learning. InProceedings of the14th Workshop on Innovative Use of NLP for Build-ing Educational Applications. Association for Com-putational Linguistics.
+
+UEDIN-MS:
+62Roman Grundkiewicz, Marcin Junczys-Dowmunt, andKenneth Heafield. 2019.  Neural Grammatical ErrorCorrection Systems with Unsupervised Pre-trainingon Synthetic Data. InProceedings of the 14th Work-shop on Innovative Use of NLP for Building Educa-tional Applications. Association for ComputationalLinguistics.
+
+The input files are found under the resource directory
+
+dev2.OT.KakaoAndBrain.tokenized.txt
+dev2.OT.UEDIN-MS.tokenized.txt
+test2.OT.KakaoAndBrain.tokenized.txt
+test2.OT.UEDIN-MS.tokenized.txt
+
+The dev2 files are used to find the optimal combination of annotation types between the two systems.   Then, this combination is used to combine the test system annotations.
+
+The output is found in the merged directory.
+
+test2.OT.UEDIN-MS_merged_OT.KakaoAndBrain.tokenized.txt
 
 ## Reference
 Yoav Kantor, Yoav Katz, Leshem Choshen, Edo Cohen-Karlik, Naftali Liberman, Assaf Toledo, Amir Menczel, Noam Slonim

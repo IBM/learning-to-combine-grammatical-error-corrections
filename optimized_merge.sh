@@ -1,12 +1,27 @@
 #!/bin/sh
-
+# (C) Copyright IBM Corporation 2020.
+#
+# LICENSE: Apache License 2.0 (Apache-2.0)
+# http://www.apache.org/licenses/LICENSE-2.0
 # The script accepts to tool names to merge
 
 tool1=$1
 tool2=$2
+dev_set=$3
+test_set=$4
+
+if [ -z $test_set ]; then
+   echo "NAME"
+   echo "optimized_merged.sh - This combines the results script performs an operation (AND/OR/FILTER) between two m2 files"
+   echo 
+   echo "SYNOPSIS"
+   echo "optimized_merged.sh tool1 tool2 dev_set train_set [seed]" 
+   echo
+   exit
+fi 
 
 # Optional seed used to split the dev set, if not specified, split by row index
-seed=$3
+seed=$5
 if [ ! -z $seed ] ; then
    seed_arg="-seed ${seed}"
 else
@@ -17,9 +32,6 @@ fi
 set -e
 
 # The name of the dev and tests sets.
-dev_set="dev2"
-#test_set="dev2"
-test_set="test2"
 dev_gold_m2="${dev_set}.gold.bea19.m2"
 resource_dir="resources"
 echo "*******************************************************************************************************"
@@ -84,18 +96,17 @@ do
     done
 done
 
-# Configuration to used in development
-dev_set="dev2.part1"
-test_set="dev2.part2"
-test_gold_m2="${test_set}.gold.bea19.m2"
-dev_gold_m2="${dev_set}.gold.bea19.m2"
-
-# Configuration to be used in actual test
-dev_set="dev2"
-test_set="test2"
-test_gold_m2=""
-dev_gold_m2="${dev_set}.gold.bea19.m2"
-
+# Configuration to used in development, where we split the dev set
+if [ dev_set == test_set ]; then
+  dev_set="${sev_set}.part1"
+  test_set="${dev_set}.part2"
+  test_gold_m2="${test_set}.gold.bea19.m2"
+  dev_gold_m2="${dev_set}.gold.bea19.m2"
+else 
+  # Configuration to be used in actual test
+  test_gold_m2=""
+  dev_gold_m2="${dev_set}.gold.bea19.m2"
+fi
 
 # Show the assessment of each of the tools on the dev set
 for i in $tool1 $tool2
@@ -200,9 +211,6 @@ if [ ! -z $test_gold_m2 ]; then
 
     echo "${tool1}_merged_${tool2}:"
     errant_compare -hyp merged/${test_set}.${tool1}_merged_${tool2}.m2 -ref merged/${test_gold_m2} -cat ${CAT} | tee merged/${test_set}.${tool1}_merged_${tool2}.results | tail -5
-
-    echo "${tool1}_merged_${tool2}_tw:"
-    errant_compare -hyp merged/${test_set}.${tool1}_merged_${tool2}_tw.m2 -ref merged/${test_gold_m2} -cat ${CAT} | tee merged/${test_set}.${tool1}_merged_${tool2}_tw.results | tail -5
 
     echo "merged/${test_set}.${tool1}_merged_${tool2}_validate.m2"
     errant_compare -hyp merged/${test_set}.${tool1}_merged_${tool2}_validate.m2 -ref merged/${test_gold_m2} -cat ${CAT} | tee merged/${test_set}.${tool1}_merged_${tool2}_validate.results | tail -5

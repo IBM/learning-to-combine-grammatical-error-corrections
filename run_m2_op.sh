@@ -1,4 +1,9 @@
 #!/bin/sh
+# (C) Copyright IBM Corporation 2020.
+#
+# LICENSE: Apache License 2.0 (Apache-2.0)
+# http://www.apache.org/licenses/LICENSE-2.0
+
 set -e
 CONVERTORS_SCRIPTS="./convertors/"
 
@@ -25,10 +30,6 @@ if [ -z $SIDE_B ]; then
    exit
 fi 
 
-# SIDE_A="dev.bea19.TW.filtered.m2"
-# SIDE_B="dev.bea19.NER.filtered.m2"
-# OUT="dev.bea19.TW.and.NER.filtered.m2"
-# ACTION="AND"
 python $CONVERTORS_SCRIPTS/merge_m2_files.py -sideA $SIDE_A -sideB $SIDE_B -out $OUT -heuristics $ACTION
 echo " ################################################################"
 echo " ##     $SIDE_A"
