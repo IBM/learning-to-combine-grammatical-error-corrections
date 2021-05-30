@@ -56,6 +56,18 @@ The output is found in the `merged` directory.
 
 `test2.OT.UEDIN-MS_merged_OT.KakaoAndBrain.tokenized.txt`
 
+After zipping the file and uploading to the current CodeLab website (https://competitions.codalab.org/competitions/20228).  The results are:
+
+```tp_cs:3133
+fp_cs:868
+fn_cs:2269
+p_cs:78.31
+r_cs:58.00
+f0.5_cs:73.18
+```
+
+F0.5 of the combined system is 73.18 compared to F0.5 of 69.47 for UEDIN-MS and  69.00 KakaoAndBrain, respectively (see https://www.cl.cam.ac.uk/research/nl/bea2019st/)
+
 ## Reference
 Yoav Kantor, Yoav Katz, Leshem Choshen, Edo Cohen-Karlik, Naftali Liberman, Assaf Toledo, Amir Menczel, Noam Slonim
  (2019). 
