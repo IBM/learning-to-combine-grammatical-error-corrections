@@ -6,6 +6,8 @@ This repository contains the code that implements the automatic combination of g
 
 [Installation](#installation)
 
+[Example](#example)
+
 [License](#license)
 
 ## Installation
@@ -27,7 +29,7 @@ pip install pandas
 pip install scipy
 ```
  
-## Example run
+## Example
 
 The script `combine_top_bea19_systems.sh` combines the original top systems in the BEA 2019 Shared Task.
 
@@ -52,7 +54,7 @@ test2.OT.UEDIN-MS.tokenized.txt
 
 The `dev2` files are used to find the optimal combination of annotation types between the two systems.   Then, this combination is used to combine the test system annotations.
 
-The output is found in the `merged` directory.
+The output is found in the `output` directory.
 
 `test2.OT.UEDIN-MS_merged_OT.KakaoAndBrain.tokenized.txt`
 
@@ -67,6 +69,29 @@ f0.5_cs:73.18
 ```
 
 F0.5 of the combined system is 73.18 compared to F0.5 of 69.47 for UEDIN-MS and  69.00 KakaoAndBrain, respectively (see https://www.cl.cam.ac.uk/research/nl/bea2019st/)
+
+The script `combine_top_bea19_systems.sh` is simply a wrapper of the `optimized_merge.sh` script that takes two systems and two datasets (a dev set for selection of combination policy and the test set).
+
+```
+optimized_merge.sh OT.UEDIN-MS $OT.KakaoAndBrain dev2 test2
+```
+
+
+Following the run the `merged` directory contains a cache of intermediate results, that make future runs faster.  It can be deleted to ensure a clean run after a failure.
+
+## Combining more than two systems
+
+To combine three or more systems, the merge should be done in a pairwise fashion.
+
+```
+optimized_merge.sh OT.UEDIN-MS OT.KakaoAndBrain dev2 test2
+optimized_merge.sh OT.UEDIN-MS_merged_OT.KakaoAndBrain OT.Shuyao dev2 test2
+```
+
+Shayao was the 5th system in the original shared task.
+
+Shuyao Xu, Jiehao Zhang, Jin Chen, and Long Qin. 2019. Erroneous data generation for Grammatical Error Correction.   In proceedings of the 14th Workshop on Innovative Use of NLP for Building Educational Applications. Association for Computational Linguistics. 
+https://www.aclweb.org/anthology/W19-4415/
 
 ## Reference
 Yoav Kantor, Yoav Katz, Leshem Choshen, Edo Cohen-Karlik, Naftali Liberman, Assaf Toledo, Amir Menczel, Noam Slonim
